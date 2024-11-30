@@ -1,0 +1,121 @@
+To get this running, follow these steps:
+
+First, create a new React project using create-react-app:
+
+bashCopynpx create-react-app graph-rag-frontend
+cd graph-rag-frontend
+
+Install the required dependencies:
+
+bashCopynpm install lucide-react @tailwindcss/forms tailwindcss postcss autoprefixer
+
+Set up Tailwind CSS by creating a tailwind.config.js file:
+
+bashCopynpx tailwindcss init -p
+
+Replace the content of the created tailwind.config.js:
+
+javascriptCopymodule.exports = {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
+}
+
+Add Tailwind directives to your ./src/index.css:
+
+cssCopy@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+Copy the React component code from the first artifact into src/App.js
+For the backend, create a new directory and set up a Python virtual environment:
+
+bashCopymkdir graph-rag-backend
+cd graph-rag-backend
+python -m venv venv
+source venv/bin/activate  # On Windows use: venv\Scripts\activate
+
+Install the required Python packages:
+
+bashCopypip install fastapi python-multipart uvicorn
+
+Create a main.py file and copy the backend code from the second artifact into it.
+Start both servers:
+
+
+Frontend (in the graph-rag-frontend directory):
+
+bashCopynpm start
+
+Backend (in the graph-rag-backend directory):
+
+bashCopypython main.py
+The application should now be running with:
+
+Frontend at http://localhost:3000
+Backend at http://localhost:8000
+
+
+可以啊，但是可否拆分成一个sidebar page 文件和多个页面文件呢
+
+
+好的，我来帮你重构代码，将其拆分成多个组件文件。让我们创建一个更清晰的项目结构。
+
+首先创建以下目录结构:
+
+
+Copy
+src/
+├── components/
+│   ├── layout/
+│   │   └── Sidebar.jsx
+│   └── FileUpload.jsx
+├── pages/
+│   ├── Home.jsx
+│   ├── Indexing.jsx
+│   ├── PromptTuning.jsx
+│   ├── Query.jsx
+│   └── Configuration.jsx
+├── App.jsx
+└── index.js
+让我们逐个实现这些组件：
+
+
+Sidebar Component (src/components/layout/Sidebar.jsx)
+Click to open code
+
+FileUpload Component (src/components/FileUpload.jsx)
+Click to open code
+现在让我们创建各个页面组件：
+
+
+Page Components
+Click to open code
+最后，更新主App组件：
+
+
+Main App Component (src/App.jsx)
+Click to open code
+要使用这些组件，你需要：
+
+创建上述目录结构
+在每个目录下创建相应的文件
+复制对应的代码到各个文件中
+另外还需要安装依赖：
+
+bash
+
+Copy
+npm install lucide-react @tailwindcss/forms tailwindcss postcss autoprefixer
+这样的结构有以下优点：
+
+组件职责清晰，各司其职
+代码更容易维护和扩展
+文件组织更加清晰
+便于团队协作
